@@ -1,4 +1,4 @@
-#include"ChessBoard.h"
+#include"Chessboard.hpp"
 
 #include<iostream>
 
@@ -9,29 +9,58 @@ int main() {
 	cout << "========================\n";
 	cout << "Testing the Chess Engine\n";
 	cout << "========================\n\n";
-
+	
 	ChessBoard cb;
 	cout << '\n';
-
+	
 	cb.submitMove("D7", "D6");
 	cout << '\n';
-
+	
 	cb.submitMove("D4", "H6");
 	cout << '\n';
-
+	
 	cb.submitMove("D2", "D4");
 	cout << '\n';
-
+	
 	cb.submitMove("F8", "B4");
 	cout << '\n';
 
+	/// EXTRA MOVES
+	cb.submitMove("A7", "A5");
+	cout << '\n';
+
+	cb.submitMove("B2", "B4");
+	cout << '\n';
+
+	cb.submitMove("A8", "A6");
+	cout << '\n';
+
+	cb.submitMove("B4", "A5");
+	cout << '\n';
+
+	cb.submitMove("A6", "A5");
+	cout << '\n';
+
+	cb.submitMove("A2", "A4");
+	cout << '\n';
+
+	cb.submitMove("A5", "G5");
+	cout << '\n';
+
+	cb.submitMove("G2", "G4");
+	cout << '\n';
+
+	cb.submitMove("G5", "G1");
+	cout << '\n';
+
+	/*
 	cout << "=========================\n";
 	cout << "Alekhine vs. Vasic (1931)\n";
 	cout << "=========================\n\n";
-
+	
 	cb.resetBoard();
 	cout << '\n';
-
+	
 	cb.submitMove("E2", "E4");
 	cb.submitMove("E7", "E6");
 	cout << '\n';
@@ -74,6 +103,6 @@ int main() {
 
 	cb.submitMove("D3", "G6");
 	cout << '\n';
-
+	*/
 	return 0;
 }
