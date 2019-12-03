@@ -25,7 +25,7 @@ int main() {
 	cb.submitMove("F8", "B4");
 	cout << '\n';
 
-	/// EXTRA MOVES
+	/*// EXTRA MOVES
 	cb.submitMove("A7", "A5");
 	cout << '\n';
 
@@ -53,7 +53,7 @@ int main() {
 	cb.submitMove("G5", "G1");
 	cout << '\n';
 
-	/*
+	*/
 	cout << "=========================\n";
 	cout << "Alekhine vs. Vasic (1931)\n";
 	cout << "=========================\n\n";
@@ -103,6 +103,6 @@ int main() {
 
 	cb.submitMove("D3", "G6");
 	cout << '\n';
-	*/
+	
 	return 0;
 }
