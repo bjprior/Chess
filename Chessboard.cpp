@@ -114,6 +114,11 @@ int ChessBoard::submitMove(const char* start, const char* end){
     return ERROR;
   }
 
+  if(srow == erow and scolumn == erow){
+    cout << "Cannot move from and to the same position: "
+	 << start << " to "<< end << "!"<<endl;
+    return ERROR;
+  }
   /*cout << "start row:" << srow << endl;
   cout << "start column:"<< scolumn << endl;
   cout << "end row:" << erow << endl;
@@ -134,7 +139,7 @@ int ChessBoard::submitMove(const char* start, const char* end){
   if(colour_piece != turn){
     cout <<"It is not ";
     print_colour(colour_piece);
-    cout<< "turn to move!" << endl;
+    cout<< " turn to move!" << endl;
     return ERROR;
   }
 
@@ -143,13 +148,14 @@ int ChessBoard::submitMove(const char* start, const char* end){
   print_colour(colour_piece);
 
   outcome = boardp[srow][scolumn]->move(start,end);
-  if(outcome< 0)
+  if(outcome == ERROR)
     return ERROR;
 
   if(outcome == TAKE_PIECE){
     delete boardp[erow][ecolumn];
     boardp[erow][ecolumn] = nullptr;
   }
+  
   boardp[erow][ecolumn] = boardp[srow][scolumn];
   boardp[srow][scolumn] = nullptr;
 
@@ -159,7 +165,10 @@ int ChessBoard::submitMove(const char* start, const char* end){
   
   return 0;
 }
+
 void ChessBoard::resetBoard(){
+  
+
 }
 
 void ChessBoard::change_turn(){

@@ -25,7 +25,7 @@ int main() {
 	cb.submitMove("F8", "B4");
 	cout << '\n';
 
-	/*// EXTRA MOVES
+	/// EXTRA MOVES
 	cb.submitMove("A7", "A5");
 	cout << '\n';
 
@@ -50,17 +50,60 @@ int main() {
 	cb.submitMove("G2", "G4");
 	cout << '\n';
 
+	cb.submitMove("B8", "B7");
+	cout << '\n';
+
+	cb.submitMove("B8", "A6");
+	cout << '\n';
+
+	cb.submitMove("E1", "E2");
+	cout << '\n';
+
+	cb.submitMove("E1", "D2");
+	cout << '\n';
+
+	cb.submitMove("A6", "B4");
+	cout << '\n';
+
+	cb.submitMove("D2", "D3");
+	cout << '\n';
+
+	cb.submitMove("B7", "B7");
+	cout << '\n';
+
+	cb.submitMove("D7", "D5");
+	cout << '\n';
+
+	cb.submitMove("D1", "D2");
+	cout << '\n';
+
+	cb.submitMove("D8", "D6");
+	cout << '\n';
+
+	cb.submitMove("D2", "G5");
+	cout << '\n';
+
+	cb.submitMove("D6", "H2");
+	cout << '\n';
+
 	cb.submitMove("G5", "G1");
 	cout << '\n';
 
-	*/
+	cb.submitMove("G5", "G4");
+	cout << '\n';
+
+	cb.submitMove("G5", "B5");
+	cout << '\n';
+	
+
+	
 	cout << "=========================\n";
 	cout << "Alekhine vs. Vasic (1931)\n";
 	cout << "=========================\n\n";
 	
 	cb.resetBoard();
 	cout << '\n';
-	
+       
 	cb.submitMove("E2", "E4");
 	cb.submitMove("E7", "E6");
 	cout << '\n';

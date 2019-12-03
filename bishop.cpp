@@ -56,7 +56,7 @@ int Bishop::move(const char* start, const char* end){
   }
 
     // Check square doesnt occupy piece of same colour //
-  if(board->boardp[trow][tcolumn] != nullptr and
+  if(board->boardp[erow][ecolumn] != nullptr and
      board->boardp[erow][ecolumn]->colour == colour){
     cout <<" Bishop cannot move from " << start << " to " << end << "!" << endl;
       return ERROR;
@@ -76,6 +76,8 @@ int Bishop::move(const char* start, const char* end){
     cout << endl;
     return TAKE_PIECE;
   }
+
+  cout << " Error(def) in move:" << start<< " to " << end << endl;
   return ERROR;
   
 
