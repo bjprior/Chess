@@ -16,7 +16,7 @@ int Rook::move(const char* start, const char* end){
 
   int srow, scolumn, erow, ecolumn, drow,dcolumn ,adjust, trow, tcolumn;
   int colour;
-
+  
   srow = rank_check(start[1]);
   scolumn = file_check(start[0]);
   erow = rank_check(end[1]);
@@ -29,9 +29,7 @@ int Rook::move(const char* start, const char* end){
 
   // Check for valid move // 
   if(drow != 0 and dcolumn !=0){
-    cout << "Rook invalid move:" << start <<
-      " to " << end << "!"<< endl;
-    return ERROR;
+    return INVALID_MOVE;
   }
 
   if(drow != 0)
@@ -49,36 +47,27 @@ int Rook::move(const char* start, const char* end){
     if(dcolumn != 0)
       tcolumn = scolumn +(i*(abs(adjust)/adjust));
     if(board->boardp[trow][tcolumn] != nullptr){
-      cout <<" Rook cannot move from " <<start<<" to " << end << "!" << endl;
-      return ERROR;
+      return PIECE_BLOCKING;
     }
   }
 
   // Check square doesnt occupy piece of same colour //
-  if(board->boardp[trow][tcolumn] != nullptr and
+  if(board->boardp[erow][ecolumn] != nullptr and
      board->boardp[erow][ecolumn]->colour == colour){
-    cout <<" Rook cannot move from " << start << " to " << end << "!" << endl;
-      return ERROR;
+    return CANNOT_CAPTURE_OWN_PIECE;
   }
     
 
-  cout << " Rook moves from " << start <<" to " << end;
 
   if(board->boardp[erow][ecolumn] == nullptr){
-    cout << endl;
     return REGULAR_MOVE;
   }
   if(board->boardp[erow][ecolumn] != nullptr){
-    cout<< " taking ";
-    print_colour(board->boardp[erow][ecolumn]->colour);
-    cout <<" ";
-    board->boardp[erow][ecolumn]->print_type();
-    cout << endl;
     return TAKE_PIECE;
   }
 
   cout << " Error(def) in move:" << start<< " to " << end << endl;
-  return ERROR;
+  return UNDEFINED_ERROR;
 
 }
 

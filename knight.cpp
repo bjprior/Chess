@@ -28,34 +28,25 @@ int Knight::move(const char* start, const char* end){
   // Check for valid move //
   
   if(!((abs(drow) == 2 and abs(dcolumn) ==1) or (abs(drow) ==1 and abs(dcolumn) ==2))){
-    cout << " Knight invalid move: " << start << " to " << end << "!" << endl;
-    return ERROR;
+    return INVALID_MOVE;
   }
 
    // Check square doesnt occupy piece of same colour //
   if(board->boardp[erow][ecolumn] != nullptr and
      board->boardp[erow][ecolumn]->colour == colour){
-    cout <<" Knight cannot move from " << start << " to " << end << "!" << endl;
-      return ERROR;
+    return CANNOT_CAPTURE_OWN_PIECE;
   }
 
-  cout << " Knight moves from " << start <<" to " << end;
-
+  
   if(board->boardp[erow][ecolumn] == nullptr){
-    cout << endl;
     return REGULAR_MOVE;
   }
   if(board->boardp[erow][ecolumn] != nullptr){
-    cout<< " taking ";
-    print_colour(board->boardp[erow][ecolumn]->colour);
-    cout <<" ";
-    board->boardp[erow][ecolumn]->print_type();
-    cout << endl;
     return TAKE_PIECE;
   }
   
   cout << " Error(def) in move:" << start<< " to " << end << endl;
-  return ERROR;
+  return UNDEFINED_ERROR;
 }
 
 void Knight::print_type(){

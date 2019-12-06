@@ -12,7 +12,7 @@ int main() {
 	
 	ChessBoard cb;
 	cout << '\n';
-	
+	/*
 	cb.submitMove("D7", "D6");
 	cout << '\n';
 	
@@ -24,23 +24,23 @@ int main() {
 	
 	cb.submitMove("F8", "B4");
 	cout << '\n';
-
+	
 	/// EXTRA MOVES
 	cb.submitMove("A7", "A5");
 	cout << '\n';
 
-	cb.submitMove("B2", "B4");
+	cb.submitMove("D4", "D5");
 	cout << '\n';
 
-	cb.submitMove("A8", "A6");
+	cb.submitMove("A5", "A4");
+	cout << '\n';
+	
+	cb.submitMove("D5", "D6");
 	cout << '\n';
 
-	cb.submitMove("B4", "A5");
+	cb.submitMove("E7", "D6");
 	cout << '\n';
-
-	cb.submitMove("A6", "A5");
-	cout << '\n';
-
+	
 	cb.submitMove("A2", "A4");
 	cout << '\n';
 
@@ -96,7 +96,7 @@ int main() {
 	cout << '\n';
 	
 
-	
+	*//*
 	cout << "=========================\n";
 	cout << "Alekhine vs. Vasic (1931)\n";
 	cout << "=========================\n\n";
@@ -107,7 +107,7 @@ int main() {
 	cb.submitMove("E2", "E4");
 	cb.submitMove("E7", "E6");
 	cout << '\n';
-
+	
 	cb.submitMove("D2", "D4");
 	cb.submitMove("D7", "D5");
 	cout << '\n';
@@ -141,11 +141,72 @@ int main() {
 	cout << '\n';
 
 	cb.submitMove("E2", "E6");
+	
 	cb.submitMove("F7", "E6");
 	cout << '\n';
-
+	
 	cb.submitMove("D3", "G6");
 	cout << '\n';
+	*/
+	cout << "==========Additonal Tests ================";
+	cout << endl << endl;
+
+	cb.submitMove("E2", "E3");
+	cout << endl;
+
+	cb.submitMove("A7", "A5");
+	cout << endl;
+
+	cb.submitMove("D1", "H5");
+	cout << endl;
+
+	cb.submitMove("A8", "A6");
+	cout << endl;
+
+	cb.submitMove("H5", "A5");
+	cout << endl;
+
+	cb.submitMove("H7", "H5");
+	cout << endl;
+
+	cb.submitMove("H2", "H4");
+	cout << endl;
+
+	cb.submitMove("A6", "H6");
+	cout << endl;
+
+	cb.submitMove("A5", "C7");
+	cout << endl;
+
+	cb.submitMove("F7", "F6");
+	cout << endl;
+
+	cb.submitMove("C7", "D7");
+	cout << endl;
+
+	cb.submitMove("E8", "F7");
+	cout << endl;
+
+	cb.submitMove("D7", "B7");
+	cout << endl;
+
+	cb.submitMove("D8", "D3");
+	cout << endl;
+
+	cb.submitMove("B7", "B8");
+	cout << endl;
+
+	cb.submitMove("D3", "H7");
+	cout << endl;
+
+	cb.submitMove("B8", "C8");
+	cout << endl;
+
+	cb.submitMove("F7", "G6");
+	cout << endl;
+
+	cb.submitMove("C8", "E6");
+	cout << endl;
 	
 	return 0;
 }

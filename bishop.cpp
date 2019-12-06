@@ -27,9 +27,7 @@ int Bishop::move(const char* start, const char* end){
 
   // Check for valid move // 
   if(abs(drow) != abs(dcolumn)){
-    this->print_type();
-    cout << " Bishop invalid move, not diagonal" << endl;
-    return ERROR;
+    return BISHOP_NOT_DIAGONAL;
   }
 
   if(drow < 0)
@@ -50,35 +48,26 @@ int Bishop::move(const char* start, const char* end){
     trow = srow+(i*arow);
     tcolumn = scolumn+(i* acolumn);
     if(board->boardp[trow][tcolumn] != nullptr){
-      cout <<" Bishop cannot move to " << end <<"!"<< endl;
-      return ERROR;
+      return PIECE_BLOCKING;
     }
   }
 
     // Check square doesnt occupy piece of same colour //
   if(board->boardp[erow][ecolumn] != nullptr and
      board->boardp[erow][ecolumn]->colour == colour){
-    cout <<" Bishop cannot move from " << start << " to " << end << "!" << endl;
-      return ERROR;
+      return CANNOT_CAPTURE_OWN_PIECE;
   }
   
-  cout << " Bishop moves from " << start <<" to " << end;
-
+ 
   if(board->boardp[erow][ecolumn] == nullptr){
-    cout << endl;
     return REGULAR_MOVE;
   }
   if(board->boardp[erow][ecolumn] != nullptr){
-    cout<< " taking ";
-    print_colour(board->boardp[erow][ecolumn]->colour);
-    cout <<" ";
-    board->boardp[erow][ecolumn]->print_type();
-    cout << endl;
     return TAKE_PIECE;
   }
 
   cout << " Error(def) in move:" << start<< " to " << end << endl;
-  return ERROR;
+  return UNDEFINED_ERROR;
   
 
 }

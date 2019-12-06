@@ -28,8 +28,7 @@ int Queen::move(const char* start, const char* end){
 
   // Check for valid move //
   if(!((abs(drow) == abs(dcolumn)) or (drow == 0 and dcolumn !=0) or (drow != 0 and dcolumn ==0))){
-    cout << " Queen invalid move: " << start << " to " << end << "!" << endl;
-    return ERROR;
+    return INVALID_MOVE;
   }
 
   // Diagonal Check //
@@ -52,8 +51,7 @@ int Queen::move(const char* start, const char* end){
       trow = srow+(i*arow);
       tcolumn = scolumn+(i* acolumn);
       if(board->boardp[trow][tcolumn] != nullptr){
-	cout <<" Queen cannot move to " << end <<"!"<< endl;
-	return ERROR;
+	return PIECE_BLOCKING;
       }
     }
   }    
@@ -75,8 +73,7 @@ int Queen::move(const char* start, const char* end){
       if(dcolumn != 0)
 	tcolumn = scolumn +(i*(abs(adjust)/adjust));
       if(board->boardp[trow][tcolumn] != nullptr){
-	cout <<" Queen cannot move from " <<start<<" to " << end << "!" << endl;
-	return ERROR;
+	return PIECE_BLOCKING;
       }
     }
   }
@@ -84,27 +81,18 @@ int Queen::move(const char* start, const char* end){
   // Check square doesnt occupy piece of same colour //
   if(board->boardp[erow][ecolumn] != nullptr and
      board->boardp[erow][ecolumn]->colour == colour){
-    cout <<" Queen cannot move from " << start << " to " << end << "!" << endl;
-      return ERROR;
+      return CANNOT_CAPTURE_OWN_PIECE;
   }
   
-  cout << " Queen moves from " << start <<" to " << end;
-
   if(board->boardp[erow][ecolumn] == nullptr){
-    cout << endl;
     return REGULAR_MOVE;
   }
   if(board->boardp[erow][ecolumn] != nullptr){
-    cout<< " taking ";
-    print_colour(board->boardp[erow][ecolumn]->colour);
-    cout <<" ";
-    board->boardp[erow][ecolumn]->print_type();
-    cout << endl;
     return TAKE_PIECE;
   }
 
   cout << " Error(def) in move:" << start<< " to " << end << endl;
-  return ERROR;
+  return UNDEFINED_ERROR;
 }
 
 void Queen::print_type(){

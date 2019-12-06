@@ -9,7 +9,7 @@ public:
   Piece(char* pos, int colour, ChessBoard* board);
 
   char position[2];
-  int colour; // 1 for white, 2 for black 
+  const int colour; // 1 for white, 2 for black 
   int number_of_moves;
   ChessBoard* board;
   char type;

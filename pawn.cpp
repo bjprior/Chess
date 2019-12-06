@@ -4,6 +4,7 @@
 #include<iostream>
 #include"Chessboard.hpp"
 #include<cstdlib>
+#include"errors.hpp"
 
 using namespace std;
 
@@ -29,42 +30,81 @@ int Pawn::move(const char* start, const char* end){
   
   colour = this->colour;
 
-  // Check for fwd move //
+  // Check for fwd moves //
   if(colour == WHITE and fwd_move >0){
-    cout << " Pawn cannot move backwards!" << endl;
-    return ERROR;
+    return PAWN_BACKWARDS;
   }
   if(colour == BLACK and fwd_move < 0){
-    cout << " Pawn cannot move backwards!" << endl;
-    return ERROR;
+    return PAWN_BACKWARDS;
   }
-
-  // Make fwd move //
+  
+  // Check valid moves // 
+  if(abs(fwd_move) > 1 and number_of_moves > 0 and side_move ==0){
+    return INVALID_MOVE;
+  }
+  
+  if(abs(fwd_move) > 2 and number_of_moves == 0 and side_move ==0){
+    return INVALID_MOVE;
+  }
+  
+  if(abs(fwd_move) > 1 and abs(side_move) > 1){
+    return INVALID_MOVE;
+  }
+  
+  if(abs(fwd_move) ==1 and abs(side_move) ==1 and board->boardp[erow][ecolumn]==nullptr ){
+        return NONE_CAPTURING_DIAGONAL;
+  }
+  
+  if((abs(fwd_move) == 1 or abs(fwd_move) ==2) and board->boardp[erow][ecolumn] != nullptr and
+     board->boardp[erow][ecolumn]->colour != colour and side_move == 0){
+    return INVALID_MOVE;
+  }
+  
+  if(abs(fwd_move) > 2 or abs(side_move) >2){
+        return INVALID_MOVE;
+  }
+  
+  if(abs(fwd_move) >1 and number_of_moves >0){
+    return INVALID_MOVE;
+  }
+  
+  if(fwd_move == 0 and side_move != 0){
+    return INVALID_MOVE;
+  }
+  
+  //Check for blocking piece in first forward move //
+  if(abs(fwd_move) ==2){
+    int temp_adj_row = fwd_move/2;
+    if(board->boardp[srow+temp_adj_row][scolumn] != nullptr){
+    return PIECE_BLOCKING;
+    }
+  }
+  
+  if(board->boardp[erow][ecolumn] != nullptr and board->boardp[erow][ecolumn]->colour == colour){
+    return CANNOT_CAPTURE_OWN_PIECE;
+  }
+  // Make fwd move (first move) //
   if(number_of_moves == 0 and abs(fwd_move) <3 and side_move == 0 and
      board->boardp[erow][ecolumn] == nullptr){
-    cout << " Pawn moves from " << start << " to " << end << endl;
     return REGULAR_MOVE;
   }
 
+  // Make fwd move (subsequent moves) //
   if(number_of_moves > 0 and abs(fwd_move) <2 and side_move == 0 and
      board->boardp[erow][ecolumn] == nullptr){
-    cout << " Pawn moves from " << start << " to " << end << endl;
     return REGULAR_MOVE;
   }
 
-  if(abs(fwd_move)==1 and abs(side_move) ==1 and
-     (board->boardp[erow][ecolumn]->colour != colour)){
-    cout <<  " Pawn moves from " << start << " to " << end
-	 << " taking ";
-    print_colour(board->boardp[erow][ecolumn]->colour);
-    cout <<" ";
-    board->boardp[erow][ecolumn]->print_type();
-    cout << endl;
+  
+  // Make diagonal capturing move //
+  if(abs(fwd_move)==1 and abs(side_move) ==1 and (board->boardp[erow][ecolumn]!= nullptr)
+     and (board->boardp[erow][ecolumn]->colour != colour)){
     return TAKE_PIECE;
   }
+  
 
-  cout << " Error(def) in move:" << start<< " to " << end << endl;
-  return ERROR;
+  cout << " Pawn error(def) in move:" << start<< " to " << end << endl;
+  return UNDEFINED_ERROR;
 }
 
 void Pawn::print_type(){
