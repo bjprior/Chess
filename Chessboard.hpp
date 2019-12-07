@@ -43,11 +43,11 @@ public:
 
   void move_king(int colour, const char* pos);
 
-  // Checks if in check, is there a move to get out of check //
+  // Checks if in check, is there a move to get out of check, returns CHECK_MATE or NOT_IN_CHECK_MATE//
   
   int is_in_check_mate(int colour);
 
-  // Check if the game is in stale mate //
+  // Check if the game is in stale mate, returns STALE_MATE or NOT_IN_STALE_MATE //
 
   int is_in_stale_mate(int colour);
   

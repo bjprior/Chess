@@ -9,12 +9,5 @@
 #define PAWN_BACKWARDS            -7
 #define NONE_CAPTURING_DIAGONAL   -8
 #define BISHOP_NOT_DIAGONAL       -9
-
-
-
-
-
-
-
-#define UNDEFINED_ERROR          -10 
+#define UNDEFINED_ERROR           -10 
 

@@ -12,7 +12,7 @@ int main() {
 	
 	ChessBoard cb;
 	cout << '\n';
-	/*
+	
 	cb.submitMove("D7", "D6");
 	cout << '\n';
 	
@@ -96,7 +96,7 @@ int main() {
 	cout << '\n';
 	
 
-	*//*
+	
 	cout << "=========================\n";
 	cout << "Alekhine vs. Vasic (1931)\n";
 	cout << "=========================\n\n";
@@ -147,10 +147,13 @@ int main() {
 	
 	cb.submitMove("D3", "G6");
 	cout << '\n';
-	*/
+	
 	cout << "==========Additonal Tests ================";
 	cout << endl << endl;
 
+	cb.resetBoard();
+	cout << endl;
+	
 	cb.submitMove("E2", "E3");
 	cout << endl;
 

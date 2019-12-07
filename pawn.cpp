@@ -71,13 +71,19 @@ int Pawn::move(const char* start, const char* end){
   if(fwd_move == 0 and side_move != 0){
     return INVALID_MOVE;
   }
-  
+  if(abs(side_move) > 1){
+    return INVALID_MOVE;
+  }
   //Check for blocking piece in first forward move //
   if(abs(fwd_move) ==2){
     int temp_adj_row = fwd_move/2;
     if(board->boardp[srow+temp_adj_row][scolumn] != nullptr){
     return PIECE_BLOCKING;
     }
+  }
+
+  if(abs(fwd_move) > 0 and abs(side_move) > 0 and board->boardp[erow][ecolumn] == nullptr){
+    return NONE_CAPTURING_DIAGONAL;
   }
   
   if(board->boardp[erow][ecolumn] != nullptr and board->boardp[erow][ecolumn]->colour == colour){

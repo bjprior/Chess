@@ -33,7 +33,6 @@ int ChessBoard::submitMove(const char* start, const char* end){
   erow = rank_check(end[1]);
   ecolumn = file_check(end[0]);
 
-  if(boardp[srow][scolumn] != nullptr)
   
   if(srow == -1 or scolumn == -1){
     cout << start << " is an invalid coordinate!" << endl;
@@ -44,12 +43,6 @@ int ChessBoard::submitMove(const char* start, const char* end){
     cout << end << " is an invalid coordinate!" << endl;
     return INVALID_COORDINATES;
   }
-
-  
-  /*cout << "start row:" << srow << endl;
-  cout << "start column:"<< scolumn << endl;
-  cout << "end row:" << erow << endl;
-  cout << "end column:"<< ecolumn << endl;*/
 
   
   /* Check if piece in position */
@@ -137,6 +130,7 @@ int ChessBoard::submitMove(const char* start, const char* end){
   // Opponent in check and check mate following move //
   {
     int in_check_var = 0;
+    int in_check_mate_var = NOT_IN_CHECK_MATE;
     if(colour_piece == WHITE)
       in_check_var = is_in_check(end,BLACK);
     if(colour_piece == BLACK)
@@ -144,24 +138,29 @@ int ChessBoard::submitMove(const char* start, const char* end){
 
     if(in_check_var == IN_CHECK and colour_piece ==BLACK){
       cout << "White is in check";
-       if(is_in_check_mate(WHITE) == CHECK_MATE)
+      in_check_mate_var = is_in_check_mate(WHITE);
+      if(in_check_mate_var == CHECK_MATE)
 	 cout << "mate";
-       cout << endl;
+      cout << endl;
        in_check = IN_CHECK;
     }
     if(in_check_var == IN_CHECK and colour_piece == WHITE){
       cout << "Black is in check";
-      if(is_in_check_mate(BLACK)== CHECK_MATE)
-	 cout << "mate";
+      in_check_mate_var = is_in_check_mate(BLACK);
+      if(in_check_mate_var == CHECK_MATE)
+	cout << "mate";
       cout << endl;
       in_check = IN_CHECK;
     }
+    if(in_check_mate_var == CHECK_MATE)
+      return CHECK_MATE;
   }
-  print_board(this); 
+   
   change_turn();
 
   if(is_in_stale_mate(turn) == STALE_MATE){
     cout << "Game is in stalemate" << endl;
+    return STALE_MATE;
   }
   
   return 0;
