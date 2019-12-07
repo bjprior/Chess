@@ -83,8 +83,9 @@ int ChessBoard::submitMove(const char* start, const char* end){
   if(outcome < 0){
     cout << " ";
     boardp[srow][scolumn]->print_type();
-    cout << " cannot move to " << end <<"!" << endl;
+    cout << " cannot move to " << end <<"!";
     print_error(outcome);
+    cout << endl;
     return ERROR;
   }
   
@@ -112,7 +113,7 @@ int ChessBoard::submitMove(const char* start, const char* end){
     cout << endl;
   }
   
-  // Make Move !!! Dont Change ordering !!//
+  // Make Move //
   if(outcome == TAKE_PIECE){
     delete boardp[erow][ecolumn];
     boardp[erow][ecolumn] = nullptr;
@@ -158,6 +159,7 @@ int ChessBoard::submitMove(const char* start, const char* end){
    
   change_turn();
 
+  // Game in stalemate check //
   if(is_in_stale_mate(turn) == STALE_MATE){
     cout << "Game is in stalemate" << endl;
     return STALE_MATE;

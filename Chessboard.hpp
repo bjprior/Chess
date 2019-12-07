@@ -4,13 +4,15 @@
 #include"base.hpp"
 #include"errors.hpp"
 
-const int ROWS (8), FILES(8),WHITE(1), BLACK(2), IN_CHECK (1), NOT_IN_CHECK(0), CHECK_MATE (2), NOT_IN_CHECK_MATE(0), STALE_MATE (4), NOT_IN_STALE_MATE(0);
+const int ROWS (8), FILES(8),WHITE(1), BLACK(2), IN_CHECK (1), NOT_IN_CHECK(0), CHECK_MATE (2),
+  NOT_IN_CHECK_MATE(0), STALE_MATE (4), NOT_IN_STALE_MATE(0);
 
 class ChessBoard{
 public:
   
   ChessBoard();
-  
+
+  //**                 Data Members                   **//
   char board[ROWS][FILES];
   Piece* boardp[ROWS][FILES];
   int turn; // 1 for white, 2 for black
@@ -18,7 +20,7 @@ public:
   int in_check;
   char black_king[2];
   
-  // Member functions // 
+  //**             Member functions                  **// 
 
   // Resets the chessboard to starting position //
   void resetBoard();
