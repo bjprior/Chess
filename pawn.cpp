@@ -74,6 +74,9 @@ int Pawn::move(const char* start, const char* end){
   if(abs(side_move) > 1){
     return INVALID_MOVE;
   }
+  if(abs(fwd_move) >1 and side_move !=0){
+    return INVALID_MOVE;
+  }
   //Check for blocking piece in first forward move //
   if(abs(fwd_move) ==2){
     int temp_adj_row = fwd_move/2;
