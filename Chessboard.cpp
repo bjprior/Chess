@@ -1,4 +1,5 @@
 #include<iostream>
+#include<string.h>
 #include"Chessboard.hpp"
 #include"base.hpp"
 #include"pawn.hpp"
@@ -27,19 +28,27 @@ int ChessBoard::submitMove(const char* start, const char* end){
   
   int colour_piece;
   int srow,scolumn,erow,ecolumn, outcome;
+
+  if(strlen(start)>MAX_COORD_LEN){
+   cout << start << " is an invalid coordinate!" << endl;
+    return INVALID_COORDINATES;
+  } 
+  if(strlen(end)>MAX_COORD_LEN){
+   cout << end << " is an invalid coordinate!" << endl;
+    return INVALID_COORDINATES;
+  }
   
   srow = rank_check(start[1]);
   scolumn = file_check(start[0]);
   erow = rank_check(end[1]);
   ecolumn = file_check(end[0]);
-
   
-  if(srow == -1 or scolumn == -1){
+  if(srow == ERROR or scolumn == ERROR){
     cout << start << " is an invalid coordinate!" << endl;
     return INVALID_COORDINATES;
   }
 
-  if(erow == -1 or ecolumn == -1){
+  if(erow == ERROR or ecolumn == ERROR){
     cout << end << " is an invalid coordinate!" << endl;
     return INVALID_COORDINATES;
   }
@@ -165,7 +174,7 @@ int ChessBoard::submitMove(const char* start, const char* end){
     return STALE_MATE;
   }
   
-  return 0;
+  return NO_ERROR;
 }
 
 void ChessBoard::resetBoard(){

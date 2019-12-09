@@ -1,4 +1,5 @@
 #define REGULAR_MOVE               0
+#define NO_ERROR                   0
 #define TAKE_PIECE                 1
 #define ERROR                     -1
 #define PIECE_BLOCKING            -2

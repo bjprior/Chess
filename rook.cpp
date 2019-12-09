@@ -27,11 +27,15 @@ int Rook::move(const char* start, const char* end){
   drow = erow-srow;
   dcolumn = ecolumn - scolumn;
 
+  
   // Check for valid move // 
   if(drow != 0 and dcolumn !=0){
     return INVALID_MOVE;
   }
-
+  if(drow == 0 and dcolumn == 0){
+    return INVALID_MOVE;
+  }
+  
   if(drow != 0)
     adjust = drow;
   if(dcolumn !=0)
