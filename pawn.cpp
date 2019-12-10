@@ -111,8 +111,6 @@ int Pawn::move(const char* start, const char* end){
     return TAKE_PIECE;
   }
   
-
-  cout << " Pawn error(def) in move:" << start<< " to " << end << endl;
   return UNDEFINED_ERROR;
 }
 

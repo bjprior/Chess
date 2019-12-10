@@ -70,7 +70,6 @@ int Rook::move(const char* start, const char* end){
     return TAKE_PIECE;
   }
 
-  cout << " Error(def) in move:" << start<< " to " << end << endl;
   return UNDEFINED_ERROR;
 
 }

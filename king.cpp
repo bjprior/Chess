@@ -45,8 +45,7 @@ int King::move(const char* start, const char* end){
   if(board->boardp[erow][ecolumn] != nullptr){
     return TAKE_PIECE;
   }
-
-  cout << " Error(def) in move:" << start<< " to " << end << endl; 
+ 
   return UNDEFINED_ERROR;
 }
 

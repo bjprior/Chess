@@ -14,9 +14,5 @@ int file_check(char file);
 
 int rank_check(char rank);
 
-// Prints the Chessboard //
-
-void print_board(ChessBoard* board);
-
 
 #endif 
